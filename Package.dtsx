@@ -1,0 +1,951 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/3/2013 12:32:17 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="HOXHA"
+  DTS:CreatorName="THEOBALD\dursun"
+  DTS:DTSID="{BFA3FAEA-2666-41C0-8137-A5BED8D8C9BD}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.3360.12"
+  DTS:LocaleID="1031"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{512147AA-8A08-4414-A638-B147A146E6DB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HOXHA.DemoDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{35A80ECC-58AC-434B-9B1F-CD2E6DF0D226}"
+      DTS:ObjectName="HOXHA.DemoDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=HOXHA;Initial Catalog=DemoDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Xtract Connection]"
+      DTS:CreationName="XTRACT"
+      DTS:DTSID="{F866DC6A-FE83-468C-ACD5-98FF5DC66E93}"
+      DTS:ObjectName="Xtract Connection">
+      <DTS:ObjectData>
+        <XtractConnectionManager
+          ConnectionString="USER=Dursun LANG=En CLIENT=800 SYSNR=00 ASHOST=ecc.theobald-software.com PASSWD=Stuttgart2060 " />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9F812ADB-DBCF-4867-B755-5D7F472EB348}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="MaxRows">
+      <DTS:VariableValue
+        DTS:DataType="3">100</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D45DC073-EE49-4B57-A426-B519F9E40CFB}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Message">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="{5918251B-2970-45A4-AB5F-01C3C588FE5A}"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2C9872D8-39D8-4AD7-A2C9-9D46E744E44C}"
+      DTS:ExecutableType="{5918251B-2970-45A4-AB5F-01C3C588FE5A}"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\OLE DB Destination"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[XtractISBAPI]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[HOXHA.DemoDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[HOXHA.DemoDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CUSTOMER]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="CUSTOMER"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CUSTOMER]"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[CUSTOMER]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SORT1]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="SORT1"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SORT1]"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[SORT1]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="NAME"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NAME]"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[COUNTRY]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="COUNTRY"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[COUNTRY]"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[COUNTRY]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[COUNTRYISO]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="COUNTRYISO"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[COUNTRYISO]"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[COUNTRYISO]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CITY]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="CITY"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CITY]"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[CITY]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[POSTL_COD1]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="POSTL_COD1"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[POSTL_COD1]"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[POSTL_COD1]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[REGION]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="REGION"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[REGION]"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[REGION]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[STREET]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="STREET"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[STREET]"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[STREET]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TEL1_NUMBR]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="TEL1_NUMBR"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TEL1_NUMBR]"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[TEL1_NUMBR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FAX_NUMBER]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="FAX_NUMBER"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FAX_NUMBER]"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[FAX_NUMBER]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ADDRESS]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="ADDRESS"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ADDRESS]"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[ADDRESS]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CUSTOMER]"
+                      dataType="wstr"
+                      length="10"
+                      name="CUSTOMER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SORT1]"
+                      dataType="wstr"
+                      length="20"
+                      name="SORT1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NAME]"
+                      dataType="wstr"
+                      length="40"
+                      name="NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[COUNTRY]"
+                      dataType="wstr"
+                      length="3"
+                      name="COUNTRY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[COUNTRYISO]"
+                      dataType="wstr"
+                      length="2"
+                      name="COUNTRYISO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CITY]"
+                      dataType="wstr"
+                      length="40"
+                      name="CITY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[POSTL_COD1]"
+                      dataType="wstr"
+                      length="10"
+                      name="POSTL_COD1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[REGION]"
+                      dataType="wstr"
+                      length="3"
+                      name="REGION" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[STREET]"
+                      dataType="wstr"
+                      length="60"
+                      name="STREET" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TEL1_NUMBR]"
+                      dataType="wstr"
+                      length="30"
+                      name="TEL1_NUMBR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FAX_NUMBER]"
+                      dataType="wstr"
+                      length="30"
+                      name="FAX_NUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ADDRESS]"
+                      dataType="wstr"
+                      length="10"
+                      name="ADDRESS" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Xtract BAPI"
+              componentClassID="{874F7595-FB5F-40FF-96AF-FBFF8250E3EF}"
+              description="This source component executes BAPIs and RFC function modules from the SAP system"
+              name="Xtract BAPI">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specify the BAPI or RFC function module to be extracted"
+                  name="RFCFunctionName">BAPI_CUSTOMER_GETLIST</property>
+                <property
+                  dataType="System.String"
+                  description="Internal Mappings, Please use the editor"
+                  name="InternalXML">&lt;StorageBAPIBase xmlns="http://tempuri.org/StorageTableBase.xsd"&gt;
+  &lt;XtractProperties&gt;
+    &lt;PropName&gt;BAPICOMMIT&lt;/PropName&gt;
+    &lt;PropValue /&gt;
+  &lt;/XtractProperties&gt;
+  &lt;XtractProperties&gt;
+    &lt;PropName&gt;SENDEXPORTPARAMSTOPIPELINE&lt;/PropName&gt;
+    &lt;PropValue /&gt;
+  &lt;/XtractProperties&gt;
+  &lt;XtractProperties&gt;
+    &lt;PropName&gt;DONTTREATEXCEPTIONASERROR&lt;/PropName&gt;
+    &lt;PropValue /&gt;
+  &lt;/XtractProperties&gt;
+  &lt;XtractProperties&gt;
+    &lt;PropName&gt;DYNXML&lt;/PropName&gt;
+    &lt;PropValue&gt;&amp;lt;NewDataSet&amp;gt;
+  &amp;lt;DYNTAB_IDRANGE&amp;gt;
+    &amp;lt;SIGN&amp;gt;I&amp;lt;/SIGN&amp;gt;
+    &amp;lt;OPTION&amp;gt;BT&amp;lt;/OPTION&amp;gt;
+    &amp;lt;LOW&amp;gt;0&amp;lt;/LOW&amp;gt;
+    &amp;lt;HIGH&amp;gt;999999&amp;lt;/HIGH&amp;gt;
+  &amp;lt;/DYNTAB_IDRANGE&amp;gt;
+&amp;lt;/NewDataSet&amp;gt;&lt;/PropValue&gt;
+  &lt;/XtractProperties&gt;
+  &lt;XtractProperties&gt;
+    &lt;PropName&gt;DYNXSD&lt;/PropName&gt;
+    &lt;PropValue&gt;&amp;lt;?xml version="1.0" encoding="utf-16"?&amp;gt;
+&amp;lt;xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"&amp;gt;
+  &amp;lt;xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true"&amp;gt;
+    &amp;lt;xs:complexType&amp;gt;
+      &amp;lt;xs:choice minOccurs="0" maxOccurs="unbounded"&amp;gt;
+        &amp;lt;xs:element name="DYNTAB_ADDRESSDATA"&amp;gt;
+          &amp;lt;xs:complexType&amp;gt;
+            &amp;lt;xs:sequence&amp;gt;
+              &amp;lt;xs:element name="CUSTOMER" type="xs:string" minOccurs="0" /&amp;gt;
+              &amp;lt;xs:element name="SORT1" type="xs:string" minOccurs="0" /&amp;gt;
+              &amp;lt;xs:element name="NAME" type="xs:string" minOccurs="0" /&amp;gt;
+              &amp;lt;xs:element name="COUNTRY" type="xs:string" minOccurs="0" /&amp;gt;
+              &amp;lt;xs:element name="COUNTRYISO" type="xs:string" minOccurs="0" /&amp;gt;
+              &amp;lt;xs:element name="CITY" type="xs:string" minOccurs="0" /&amp;gt;
+              &amp;lt;xs:element name="POSTL_COD1" type="xs:string" minOccurs="0" /&amp;gt;
+              &amp;lt;xs:element name="REGION" type="xs:string" minOccurs="0" /&amp;gt;
+              &amp;lt;xs:element name="STREET" type="xs:string" minOccurs="0" /&amp;gt;
+              &amp;lt;xs:element name="TEL1_NUMBR" type="xs:string" minOccurs="0" /&amp;gt;
+              &amp;lt;xs:element name="FAX_NUMBER" type="xs:string" minOccurs="0" /&amp;gt;
+              &amp;lt;xs:element name="ADDRESS" type="xs:string" minOccurs="0" /&amp;gt;
+            &amp;lt;/xs:sequence&amp;gt;
+          &amp;lt;/xs:complexType&amp;gt;
+        &amp;lt;/xs:element&amp;gt;
+        &amp;lt;xs:element name="DYNTAB_IDRANGE"&amp;gt;
+          &amp;lt;xs:complexType&amp;gt;
+            &amp;lt;xs:sequence&amp;gt;
+              &amp;lt;xs:element name="SIGN" type="xs:string" minOccurs="0" /&amp;gt;
+              &amp;lt;xs:element name="OPTION" type="xs:string" minOccurs="0" /&amp;gt;
+              &amp;lt;xs:element name="LOW" type="xs:string" minOccurs="0" /&amp;gt;
+              &amp;lt;xs:element name="HIGH" type="xs:string" minOccurs="0" /&amp;gt;
+            &amp;lt;/xs:sequence&amp;gt;
+          &amp;lt;/xs:complexType&amp;gt;
+        &amp;lt;/xs:element&amp;gt;
+        &amp;lt;xs:element name="DYNTAB_SPECIALDATA"&amp;gt;
+          &amp;lt;xs:complexType&amp;gt;
+            &amp;lt;xs:sequence&amp;gt;
+              &amp;lt;xs:element name="CUSTOMER" type="xs:string" minOccurs="0" /&amp;gt;
+              &amp;lt;xs:element name="ACC_1_TIME" type="xs:string" minOccurs="0" /&amp;gt;
+            &amp;lt;/xs:sequence&amp;gt;
+          &amp;lt;/xs:complexType&amp;gt;
+        &amp;lt;/xs:element&amp;gt;
+      &amp;lt;/xs:choice&amp;gt;
+    &amp;lt;/xs:complexType&amp;gt;
+  &amp;lt;/xs:element&amp;gt;
+&amp;lt;/xs:schema&amp;gt;&lt;/PropValue&gt;
+  &lt;/XtractProperties&gt;
+  &lt;ImportParams&gt;
+    &lt;ParamName&gt;RETURN&lt;/ParamName&gt;
+    &lt;DataType&gt;STRUCTURE&lt;/DataType&gt;
+    &lt;Length&gt;0&lt;/Length&gt;
+    &lt;Decimals /&gt;
+    &lt;ParamValue /&gt;
+  &lt;/ImportParams&gt;
+  &lt;ExportParams&gt;
+    &lt;ParamName&gt;CPDONLY&lt;/ParamName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;2&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;ParamValue /&gt;
+  &lt;/ExportParams&gt;
+  &lt;ExportParams&gt;
+    &lt;ParamName&gt;MAXROWS&lt;/ParamName&gt;
+    &lt;DataType&gt;INT&lt;/DataType&gt;
+    &lt;Length&gt;4&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;ParamValue&gt;@[User::MaxRows]&lt;/ParamValue&gt;
+  &lt;/ExportParams&gt;
+  &lt;BapiTables&gt;
+    &lt;TableName&gt;ADDRESSDATA&lt;/TableName&gt;
+    &lt;InputType&gt;Skip&lt;/InputType&gt;
+    &lt;OutputType&gt;Pipeline&lt;/OutputType&gt;
+  &lt;/BapiTables&gt;
+  &lt;BapiTables&gt;
+    &lt;TableName&gt;IDRANGE&lt;/TableName&gt;
+    &lt;InputType&gt;Static&lt;/InputType&gt;
+    &lt;OutputType&gt;Skip&lt;/OutputType&gt;
+  &lt;/BapiTables&gt;
+  &lt;BapiTables&gt;
+    &lt;TableName&gt;SPECIALDATA&lt;/TableName&gt;
+    &lt;InputType&gt;Skip&lt;/InputType&gt;
+    &lt;OutputType&gt;Skip&lt;/OutputType&gt;
+  &lt;/BapiTables&gt;
+  &lt;ImportParamElements&gt;
+    &lt;ParamName&gt;RETURN&lt;/ParamName&gt;
+    &lt;ElementName&gt;TYPE&lt;/ElementName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;2&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;ParamValue /&gt;
+  &lt;/ImportParamElements&gt;
+  &lt;ImportParamElements&gt;
+    &lt;ParamName&gt;RETURN&lt;/ParamName&gt;
+    &lt;ElementName&gt;ID&lt;/ElementName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;40&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;ParamValue /&gt;
+  &lt;/ImportParamElements&gt;
+  &lt;ImportParamElements&gt;
+    &lt;ParamName&gt;RETURN&lt;/ParamName&gt;
+    &lt;ElementName&gt;NUMBER&lt;/ElementName&gt;
+    &lt;DataType&gt;NUM&lt;/DataType&gt;
+    &lt;Length&gt;6&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;ParamValue /&gt;
+  &lt;/ImportParamElements&gt;
+  &lt;ImportParamElements&gt;
+    &lt;ParamName&gt;RETURN&lt;/ParamName&gt;
+    &lt;ElementName&gt;MESSAGE&lt;/ElementName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;440&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;ParamValue&gt;@[User::Message]&lt;/ParamValue&gt;
+  &lt;/ImportParamElements&gt;
+  &lt;ImportParamElements&gt;
+    &lt;ParamName&gt;RETURN&lt;/ParamName&gt;
+    &lt;ElementName&gt;LOG_NO&lt;/ElementName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;40&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;ParamValue /&gt;
+  &lt;/ImportParamElements&gt;
+  &lt;ImportParamElements&gt;
+    &lt;ParamName&gt;RETURN&lt;/ParamName&gt;
+    &lt;ElementName&gt;LOG_MSG_NO&lt;/ElementName&gt;
+    &lt;DataType&gt;NUM&lt;/DataType&gt;
+    &lt;Length&gt;12&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;ParamValue /&gt;
+  &lt;/ImportParamElements&gt;
+  &lt;ImportParamElements&gt;
+    &lt;ParamName&gt;RETURN&lt;/ParamName&gt;
+    &lt;ElementName&gt;MESSAGE_V1&lt;/ElementName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;100&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;ParamValue /&gt;
+  &lt;/ImportParamElements&gt;
+  &lt;ImportParamElements&gt;
+    &lt;ParamName&gt;RETURN&lt;/ParamName&gt;
+    &lt;ElementName&gt;MESSAGE_V2&lt;/ElementName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;100&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;ParamValue /&gt;
+  &lt;/ImportParamElements&gt;
+  &lt;ImportParamElements&gt;
+    &lt;ParamName&gt;RETURN&lt;/ParamName&gt;
+    &lt;ElementName&gt;MESSAGE_V3&lt;/ElementName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;100&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;ParamValue /&gt;
+  &lt;/ImportParamElements&gt;
+  &lt;ImportParamElements&gt;
+    &lt;ParamName&gt;RETURN&lt;/ParamName&gt;
+    &lt;ElementName&gt;MESSAGE_V4&lt;/ElementName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;100&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;ParamValue /&gt;
+  &lt;/ImportParamElements&gt;
+  &lt;BAPITableElements&gt;
+    &lt;TableName&gt;ADDRESSDATA&lt;/TableName&gt;
+    &lt;ColName&gt;CUSTOMER&lt;/ColName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;20&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;PipelineElement&gt;&amp;lt;ignore&amp;gt;&lt;/PipelineElement&gt;
+  &lt;/BAPITableElements&gt;
+  &lt;BAPITableElements&gt;
+    &lt;TableName&gt;ADDRESSDATA&lt;/TableName&gt;
+    &lt;ColName&gt;SORT1&lt;/ColName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;40&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;PipelineElement&gt;&amp;lt;ignore&amp;gt;&lt;/PipelineElement&gt;
+  &lt;/BAPITableElements&gt;
+  &lt;BAPITableElements&gt;
+    &lt;TableName&gt;ADDRESSDATA&lt;/TableName&gt;
+    &lt;ColName&gt;NAME&lt;/ColName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;80&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;PipelineElement&gt;&amp;lt;ignore&amp;gt;&lt;/PipelineElement&gt;
+  &lt;/BAPITableElements&gt;
+  &lt;BAPITableElements&gt;
+    &lt;TableName&gt;ADDRESSDATA&lt;/TableName&gt;
+    &lt;ColName&gt;COUNTRY&lt;/ColName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;6&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;PipelineElement&gt;&amp;lt;ignore&amp;gt;&lt;/PipelineElement&gt;
+  &lt;/BAPITableElements&gt;
+  &lt;BAPITableElements&gt;
+    &lt;TableName&gt;ADDRESSDATA&lt;/TableName&gt;
+    &lt;ColName&gt;COUNTRYISO&lt;/ColName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;4&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;PipelineElement&gt;&amp;lt;ignore&amp;gt;&lt;/PipelineElement&gt;
+  &lt;/BAPITableElements&gt;
+  &lt;BAPITableElements&gt;
+    &lt;TableName&gt;ADDRESSDATA&lt;/TableName&gt;
+    &lt;ColName&gt;CITY&lt;/ColName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;80&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;PipelineElement&gt;&amp;lt;ignore&amp;gt;&lt;/PipelineElement&gt;
+  &lt;/BAPITableElements&gt;
+  &lt;BAPITableElements&gt;
+    &lt;TableName&gt;ADDRESSDATA&lt;/TableName&gt;
+    &lt;ColName&gt;POSTL_COD1&lt;/ColName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;20&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;PipelineElement&gt;&amp;lt;ignore&amp;gt;&lt;/PipelineElement&gt;
+  &lt;/BAPITableElements&gt;
+  &lt;BAPITableElements&gt;
+    &lt;TableName&gt;ADDRESSDATA&lt;/TableName&gt;
+    &lt;ColName&gt;REGION&lt;/ColName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;6&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;PipelineElement&gt;&amp;lt;ignore&amp;gt;&lt;/PipelineElement&gt;
+  &lt;/BAPITableElements&gt;
+  &lt;BAPITableElements&gt;
+    &lt;TableName&gt;ADDRESSDATA&lt;/TableName&gt;
+    &lt;ColName&gt;STREET&lt;/ColName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;120&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;PipelineElement&gt;&amp;lt;ignore&amp;gt;&lt;/PipelineElement&gt;
+  &lt;/BAPITableElements&gt;
+  &lt;BAPITableElements&gt;
+    &lt;TableName&gt;ADDRESSDATA&lt;/TableName&gt;
+    &lt;ColName&gt;TEL1_NUMBR&lt;/ColName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;60&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;PipelineElement&gt;&amp;lt;ignore&amp;gt;&lt;/PipelineElement&gt;
+  &lt;/BAPITableElements&gt;
+  &lt;BAPITableElements&gt;
+    &lt;TableName&gt;ADDRESSDATA&lt;/TableName&gt;
+    &lt;ColName&gt;FAX_NUMBER&lt;/ColName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;60&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;PipelineElement&gt;&amp;lt;ignore&amp;gt;&lt;/PipelineElement&gt;
+  &lt;/BAPITableElements&gt;
+  &lt;BAPITableElements&gt;
+    &lt;TableName&gt;ADDRESSDATA&lt;/TableName&gt;
+    &lt;ColName&gt;ADDRESS&lt;/ColName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;20&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;PipelineElement&gt;&amp;lt;ignore&amp;gt;&lt;/PipelineElement&gt;
+  &lt;/BAPITableElements&gt;
+  &lt;BAPITableElements&gt;
+    &lt;TableName&gt;IDRANGE&lt;/TableName&gt;
+    &lt;ColName&gt;SIGN&lt;/ColName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;2&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;PipelineElement&gt;&amp;lt;ignore&amp;gt;&lt;/PipelineElement&gt;
+  &lt;/BAPITableElements&gt;
+  &lt;BAPITableElements&gt;
+    &lt;TableName&gt;IDRANGE&lt;/TableName&gt;
+    &lt;ColName&gt;OPTION&lt;/ColName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;4&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;PipelineElement&gt;&amp;lt;ignore&amp;gt;&lt;/PipelineElement&gt;
+  &lt;/BAPITableElements&gt;
+  &lt;BAPITableElements&gt;
+    &lt;TableName&gt;IDRANGE&lt;/TableName&gt;
+    &lt;ColName&gt;LOW&lt;/ColName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;20&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;PipelineElement&gt;&amp;lt;ignore&amp;gt;&lt;/PipelineElement&gt;
+  &lt;/BAPITableElements&gt;
+  &lt;BAPITableElements&gt;
+    &lt;TableName&gt;IDRANGE&lt;/TableName&gt;
+    &lt;ColName&gt;HIGH&lt;/ColName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;20&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;PipelineElement&gt;&amp;lt;ignore&amp;gt;&lt;/PipelineElement&gt;
+  &lt;/BAPITableElements&gt;
+  &lt;BAPITableElements&gt;
+    &lt;TableName&gt;SPECIALDATA&lt;/TableName&gt;
+    &lt;ColName&gt;CUSTOMER&lt;/ColName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;20&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;PipelineElement&gt;&amp;lt;ignore&amp;gt;&lt;/PipelineElement&gt;
+  &lt;/BAPITableElements&gt;
+  &lt;BAPITableElements&gt;
+    &lt;TableName&gt;SPECIALDATA&lt;/TableName&gt;
+    &lt;ColName&gt;ACC_1_TIME&lt;/ColName&gt;
+    &lt;DataType&gt;CHAR&lt;/DataType&gt;
+    &lt;Length&gt;2&lt;/Length&gt;
+    &lt;Decimals&gt;0&lt;/Decimals&gt;
+    &lt;PipelineElement&gt;&amp;lt;ignore&amp;gt;&lt;/PipelineElement&gt;
+  &lt;/BAPITableElements&gt;
+&lt;/StorageBAPIBase&gt;</property>
+                <property
+                  dataType="System.String"
+                  description="Internal Mappings, Please use the editor"
+                  name="ReservedXML"></property>
+                <property
+                  dataType="System.Int32"
+                  description="String conversion"
+                  name="StringConversion">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">XtractIS.XtractSourceBAPI, XtractIS2012, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4b0cc842b94d345e</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Xtract BAPI.Connections[Xtract SAP Connection]"
+                  connectionManagerID="Package.ConnectionManagers[Xtract Connection]"
+                  connectionManagerRefId="Package.ConnectionManagers[Xtract Connection]"
+                  description="Xtract SAP Connection"
+                  name="Xtract SAP Connection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA]"
+                  description="ADDRESSDATA"
+                  name="OUT_ADDRESSDATA">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[CUSTOMER]"
+                      dataType="wstr"
+                      description="CUSTOMER"
+                      externalMetadataColumnId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[CUSTOMER]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[CUSTOMER]"
+                      name="CUSTOMER" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[SORT1]"
+                      dataType="wstr"
+                      description="SORT1"
+                      externalMetadataColumnId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[SORT1]"
+                      length="20"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[SORT1]"
+                      name="SORT1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[NAME]"
+                      dataType="wstr"
+                      description="NAME"
+                      externalMetadataColumnId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[NAME]"
+                      length="40"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[NAME]"
+                      name="NAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[COUNTRY]"
+                      dataType="wstr"
+                      description="COUNTRY"
+                      externalMetadataColumnId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[COUNTRY]"
+                      length="3"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[COUNTRY]"
+                      name="COUNTRY" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[COUNTRYISO]"
+                      dataType="wstr"
+                      description="COUNTRYISO"
+                      externalMetadataColumnId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[COUNTRYISO]"
+                      length="2"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[COUNTRYISO]"
+                      name="COUNTRYISO" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[CITY]"
+                      dataType="wstr"
+                      description="CITY"
+                      externalMetadataColumnId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[CITY]"
+                      length="40"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[CITY]"
+                      name="CITY" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[POSTL_COD1]"
+                      dataType="wstr"
+                      description="POSTL_COD1"
+                      externalMetadataColumnId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[POSTL_COD1]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[POSTL_COD1]"
+                      name="POSTL_COD1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[REGION]"
+                      dataType="wstr"
+                      description="REGION"
+                      externalMetadataColumnId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[REGION]"
+                      length="3"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[REGION]"
+                      name="REGION" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[STREET]"
+                      dataType="wstr"
+                      description="STREET"
+                      externalMetadataColumnId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[STREET]"
+                      length="60"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[STREET]"
+                      name="STREET" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[TEL1_NUMBR]"
+                      dataType="wstr"
+                      description="TEL1_NUMBR"
+                      externalMetadataColumnId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[TEL1_NUMBR]"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[TEL1_NUMBR]"
+                      name="TEL1_NUMBR" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[FAX_NUMBER]"
+                      dataType="wstr"
+                      description="FAX_NUMBER"
+                      externalMetadataColumnId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[FAX_NUMBER]"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[FAX_NUMBER]"
+                      name="FAX_NUMBER" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[ADDRESS]"
+                      dataType="wstr"
+                      description="ADDRESS"
+                      externalMetadataColumnId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[ADDRESS]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].Columns[ADDRESS]"
+                      name="ADDRESS" />
+                  </outputColumns>
+                  <externalMetadataColumns>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[CUSTOMER]"
+                      dataType="wstr"
+                      description="CUSTOMER"
+                      length="10"
+                      name="CUSTOMER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[SORT1]"
+                      dataType="wstr"
+                      description="SORT1"
+                      length="20"
+                      name="SORT1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[NAME]"
+                      dataType="wstr"
+                      description="NAME"
+                      length="40"
+                      name="NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[COUNTRY]"
+                      dataType="wstr"
+                      description="COUNTRY"
+                      length="3"
+                      name="COUNTRY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[COUNTRYISO]"
+                      dataType="wstr"
+                      description="COUNTRYISO"
+                      length="2"
+                      name="COUNTRYISO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[CITY]"
+                      dataType="wstr"
+                      description="CITY"
+                      length="40"
+                      name="CITY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[POSTL_COD1]"
+                      dataType="wstr"
+                      description="POSTL_COD1"
+                      length="10"
+                      name="POSTL_COD1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[REGION]"
+                      dataType="wstr"
+                      description="REGION"
+                      length="3"
+                      name="REGION" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[STREET]"
+                      dataType="wstr"
+                      description="STREET"
+                      length="60"
+                      name="STREET" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[TEL1_NUMBR]"
+                      dataType="wstr"
+                      description="TEL1_NUMBR"
+                      length="30"
+                      name="TEL1_NUMBR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[FAX_NUMBER]"
+                      dataType="wstr"
+                      description="FAX_NUMBER"
+                      length="30"
+                      name="FAX_NUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA].ExternalColumns[ADDRESS]"
+                      dataType="wstr"
+                      description="ADDRESS"
+                      length="10"
+                      name="ADDRESS" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[OUT_ADDRESSDATA]"
+              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OUT_ADDRESSDATA"
+              startId="Package\Data Flow Task\Xtract BAPI.Outputs[OUT_ADDRESSDATA]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Data Flow Task\Xtract BAPI"
+          TopLeft="197,184" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="172,339" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OUT_ADDRESSDATA]"
+          TopLeft="260.5,226">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,113"
+              Start="0,0"
+              End="0,105.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,105.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
