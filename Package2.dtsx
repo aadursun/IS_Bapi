@@ -5,14 +5,14 @@
   DTS:CreationName="SSIS.Package.3"
   DTS:CreatorComputerName="HOXHA"
   DTS:CreatorName="THEOBALD\dursun"
-  DTS:DTSID="{BFA3FAEA-2666-41C0-8137-A5BED8D8C9BD}"
+  DTS:DTSID="{B220AADE-0D51-4ED7-80DA-E7661CA9BE2D}"
   DTS:ExecutableType="SSIS.Package.3"
   DTS:LastModifiedProductVersion="11.0.3360.12"
   DTS:LocaleID="1031"
-  DTS:ObjectName="Package"
+  DTS:ObjectName="Package2"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{512147AA-8A08-4414-A638-B147A146E6DB}">
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{089DA548-B932-4FA1-B74B-7E6CF3404038}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
